@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juul.cat - gat vaping meme</title>
+    <title>juul.cat - vaping cat meme</title>
     <style>
         * {
             margin: 0;
@@ -17,11 +17,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             overflow: hidden;
             cursor: pointer;
             user-select: none;
             transition: background 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body.danger {
@@ -31,6 +32,7 @@
         .container {
             text-align: center;
             position: relative;
+            padding-bottom: 100px;
         }
 
         .title {
@@ -39,6 +41,7 @@
             text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
             margin-bottom: 2rem;
             animation: float 3s ease-in-out infinite;
+            font-weight: 700;
         }
 
         @keyframes float {
@@ -60,13 +63,85 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             font-family: inherit;
-            font-weight: bold;
+            font-weight: 600;
             z-index: 100;
+            touch-action: manipulation;
         }
 
         .shop-btn:hover {
             background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
+        }
+
+        .shop-btn:active {
+            transform: translateY(0);
+        }
+
+        .reset-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,100,100,0.3);
+            color: white;
+            border: 2px solid rgba(255,0,0,0.5);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-weight: 600;
+            z-index: 100;
+            touch-action: manipulation;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255,100,100,0.5);
+            transform: translateY(-2px);
+        }
+
+        .reset-btn:active {
+            transform: translateY(0);
+        }
+
+        .github-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.3);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-weight: 600;
+            z-index: 100;
+            touch-action: manipulation;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .github-btn:hover {
+            background: rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        .github-btn:active {
+            transform: translateY(0);
+        }
+
+        .github-logo {
+            width: 20px;
+            height: 20px;
+            filter: invert(1);
         }
 
         .lang-switcher {
@@ -91,8 +166,10 @@
             border-radius: 8px;
             cursor: pointer;
             font-family: inherit;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
+            touch-action: manipulation;
+            font-size: 1rem;
         }
 
         .lang-btn.active {
@@ -103,6 +180,10 @@
 
         .lang-btn:hover:not(.active) {
             background: rgba(255,255,255,0.4);
+        }
+
+        .lang-btn:active {
+            transform: scale(0.95);
         }
 
         .cat-container {
@@ -221,12 +302,13 @@
             font-size: 0.9rem;
             color: rgba(255,255,255,0.8);
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .stat-value {
             font-size: 2rem;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -234,6 +316,7 @@
             font-size: 0.8rem;
             color: #ffff00;
             margin-top: 0.3rem;
+            font-weight: 600;
         }
 
         .subtitle {
@@ -241,6 +324,7 @@
             font-size: 1.3rem;
             color: rgba(255,255,255,0.95);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 500;
         }
 
         .warning {
@@ -248,7 +332,7 @@
             font-size: 1.4rem;
             color: #ffff00;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: bold;
+            font-weight: 700;
             display: none;
             animation: blink 0.3s infinite;
         }
@@ -345,6 +429,7 @@
             font-size: 2.5rem;
             color: white;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
         }
 
         .close-btn {
@@ -357,11 +442,16 @@
             cursor: pointer;
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            touch-action: manipulation;
         }
 
         .close-btn:hover {
             background: rgba(255,255,255,0.3);
             transform: rotate(90deg);
+        }
+
+        .close-btn:active {
+            transform: rotate(90deg) scale(0.95);
         }
 
         .shop-items {
@@ -392,19 +482,20 @@
         .item-name {
             font-size: 1.3rem;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .item-desc {
             font-size: 0.9rem;
             color: rgba(255,255,255,0.8);
+            font-weight: 400;
         }
 
         .item-price {
             font-size: 1.2rem;
             color: #ffff00;
-            font-weight: bold;
+            font-weight: 700;
             margin-right: 1rem;
         }
 
@@ -416,13 +507,18 @@
             border-radius: 10px;
             cursor: pointer;
             font-family: inherit;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
+            touch-action: manipulation;
         }
 
         .buy-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .buy-btn:active:not(:disabled) {
+            transform: translateY(0);
         }
 
         .buy-btn:disabled {
@@ -460,6 +556,7 @@
             text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
             margin-bottom: 2rem;
             animation: gameOverPulse 1s infinite;
+            font-weight: 700;
         }
 
         @keyframes gameOverPulse {
@@ -472,6 +569,7 @@
             font-size: 1.5rem;
             margin-bottom: 2rem;
             text-align: center;
+            font-weight: 500;
         }
 
         .restart-btn {
@@ -482,13 +580,18 @@
             border-radius: 10px;
             cursor: pointer;
             font-family: inherit;
-            font-weight: bold;
+            font-weight: 700;
             transition: all 0.3s ease;
+            touch-action: manipulation;
         }
 
         .restart-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .restart-btn:active {
+            transform: translateY(-2px);
         }
 
         @media (max-width: 600px) {
@@ -514,73 +617,108 @@
                 padding: 0.6rem 1rem;
                 font-size: 1rem;
             }
+            .reset-btn {
+                top: 10px;
+                left: 10px;
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+            }
+            .github-btn {
+                bottom: 15px;
+                right: 10px;
+                padding: 0.5rem 0.9rem;
+                font-size: 0.9rem;
+            }
+            .github-logo {
+                width: 16px;
+                height: 16px;
+            }
             .lang-switcher {
-                bottom: 10px;
+                bottom: 15px;
+                padding: 0.4rem;
+            }
+            .lang-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .container {
+                padding-bottom: 80px;
+            }
+            .stats-container {
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+            .stat-box {
+                min-width: 130px;
+                padding: 0.8rem 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <button class="shop-btn" onclick="openShop()" id="shopButton">🛒 Botiga</button>
+    <button class="shop-btn" onclick="openShop()" id="shopButton">🛒 Shop</button>
+    <button class="reset-btn" onclick="confirmReset(event)">🔄 Reset</button>
+    <a href="https://github.com/juulcatsite/juulcat" target="_blank" rel="noopener noreferrer" class="github-btn">
+        <svg class="github-logo" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+    </a>
 
     <div class="container">
         <h1 class="title">juul.cat 💨</h1>
         <div class="cat-container">
             <div class="cat" id="cat">
-                <img id="catImage" alt="Gat vapeant">
+                <img id="catImage" alt="Vaping Cat">
                 <div class="explosion" id="explosion">💥🔥💥🔥💥</div>
             </div>
         </div>
         <div class="stats-container">
             <div class="stat-box" id="sessionBox">
-                <div class="stat-label" data-ca="Calades de sessió" data-en="Session Puffs">Calades de sessió</div>
+                <div class="stat-label" data-ca="Calades de sessió" data-en="Session Puffs">Session Puffs</div>
                 <div class="stat-value" id="sessionCount">0</div>
                 <div class="multiplier-indicator" id="multiplierDisplay"></div>
             </div>
             <div class="stat-box">
-                <div class="stat-label" data-ca="Calades totals" data-en="Total Puffs">Calades totals</div>
+                <div class="stat-label" data-ca="Calades totals" data-en="Total Puffs">Total Puffs</div>
                 <div class="stat-value" id="totalCount">0</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-label" data-ca="Puntuació màxima" data-en="High Score">Puntuació màxima</div>
-                <div class="stat-value" id="highScore">0</div>
-            </div>
         </div>
-        <div class="subtitle" id="subtitle" data-ca="fes clic a qualsevol lloc per fumar el juul ⚡" data-en="click anywhere to rip the juul ⚡">fes clic a qualsevol lloc per fumar el juul ⚡</div>
-        <div class="warning" id="warning" data-ca="⚠️ CLICS SOSPITOSOS DETECTATS ⚠️" data-en="⚠️ SUSPICIOUS CLICKING DETECTED ⚠️">⚠️ CLICS SOSPITOSOS DETECTATS ⚠️</div>
+        <div class="subtitle" id="subtitle" data-ca="fes clic a qualsevol lloc per fumar el juul ⚡" data-en="click anywhere to rip the juul ⚡">click anywhere to rip the juul ⚡</div>
+        <div class="warning" id="warning" data-ca="⚠️ CLICS SOSPITOSOS DETECTATS ⚠️" data-en="⚠️ SUSPICIOUS CLICKING DETECTED ⚠️">⚠️ SUSPICIOUS CLICKING DETECTED ⚠️</div>
     </div>
 
     <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="ca" onclick="switchLanguage('ca')">Català</button>
-        <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" data-lang="ca" onclick="switchLanguage('ca')">Català</button>
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">English</button>
     </div>
 
     <div class="modal" id="shopModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" data-ca="🛒 Millores" data-en="🛒 Upgrades">🛒 Millores</h2>
+                <h2 class="modal-title" data-ca="🛒 Millores" data-en="🛒 Upgrades">🛒 Upgrades</h2>
                 <button class="close-btn" onclick="closeShop()">×</button>
             </div>
             <div style="color: white; text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem;">
-                <span data-ca="Les teves calades:" data-en="Your Puffs:">Les teves calades:</span> <span id="shopPuffs" style="color: #ffff00; font-weight: bold;">0</span>
+                <span data-ca="Les teves calades:" data-en="Your Puffs:">Your Puffs:</span> <span id="shopPuffs" style="color: #ffff00; font-weight: bold;">0</span>
             </div>
             <div class="shop-items" id="shopItems"></div>
         </div>
     </div>
 
     <div class="game-over" id="gameOver">
-        <div class="game-over-text" data-ca="💥 ENXAMPAT! 💥" data-en="💥 BUSTED! 💥">💥 ENXAMPAT! 💥</div>
+        <div class="game-over-text" data-ca="💥 ENXAMPAT! 💥" data-en="💥 BUSTED! 💥">💥 BUSTED! 💥</div>
         <div class="final-stats">
-            <div style="font-size: 2rem; margin-bottom: 1rem;" data-ca="🤖 AUTOCLICKER DETECTAT 🤖" data-en="🤖 AUTOCLICKER DETECTED 🤖">🤖 AUTOCLICKER DETECTAT 🤖</div>
-            <div><span data-ca="Puntuació final:" data-en="Final Score:">Puntuació final:</span> <span id="finalScore">0</span> <span data-ca="calades" data-en="puffs">calades</span></div>
-            <div style="margin-top: 1rem;" data-ca="Juga net la propera vegada!" data-en="Play fair next time!">Juga net la propera vegada!</div>
+            <div style="font-size: 2rem; margin-bottom: 1rem;" data-ca="🤖 AUTOCLICKER DETECTAT 🤖" data-en="🤖 AUTOCLICKER DETECTED 🤖">🤖 AUTOCLICKER DETECTED 🤖</div>
+            <div><span data-ca="Puntuació final:" data-en="Final Score:">Final Score:</span> <span id="finalScore">0</span> <span data-ca="calades" data-en="puffs">puffs</span></div>
+            <div style="margin-top: 1rem;" data-ca="Juga net la propera vegada!" data-en="Play fair next time!">Play fair next time!</div>
         </div>
-        <button class="restart-btn" onclick="restart()" data-ca="Torna a provar (Legítimament) 🔄" data-en="Try Again (Legitimately) 🔄">Torna a provar (Legítimament) 🔄</button>
+        <button class="restart-btn" onclick="restart()" data-ca="Torna a provar (Legítimament) 🔄" data-en="Try Again (Legitimately) 🔄">Try Again (Legitimately) 🔄</button>
     </div>
 
     <script>
-        // Language system
-        let currentLang = 'ca';
+        // Language system - DEFAULT TO ENGLISH
+        let currentLang = 'en';
         
         const translations = {
             ca: {
@@ -607,7 +745,13 @@
                     { name: 'Multiplicador 2x', desc: 'Duplica les calades per clic', price: 100 },
                     { name: 'Multiplicador 3x', desc: 'Triplica les calades per clic', price: 300 },
                     { name: 'Multiplicador 5x', desc: '5 calades per clic!', price: 1000 },
-                    { name: 'Multiplicador 10x', desc: 'MEGA CALADES!', price: 5000 }
+                    { name: 'Multiplicador 10x', desc: 'MEGA CALADES!', price: 5000 },
+                    { name: 'Multiplicador 25x', desc: '25 calades per clic!', price: 25000 },
+                    { name: 'Multiplicador 50x', desc: '50 calades per clic!', price: 100000 },
+                    { name: 'Multiplicador 100x', desc: 'CENT CALADES!', price: 500000 },
+                    { name: 'Multiplicador 250x', desc: 'INSANITAT!', price: 2500000 },
+                    { name: 'Multiplicador 500x', desc: 'MONSTRUÓS!', price: 10000000 },
+                    { name: 'Multiplicador 1000x', desc: 'LLEGENDARI! MIL VEGADES!', price: 50000000 }
                 ]
             },
             en: {
@@ -634,7 +778,13 @@
                     { name: '2x Multiplier', desc: 'Double puffs per click', price: 100 },
                     { name: '3x Multiplier', desc: 'Triple puffs per click', price: 300 },
                     { name: '5x Multiplier', desc: '5 puffs per click!', price: 1000 },
-                    { name: '10x Multiplier', desc: 'MEGA PUFFS!', price: 5000 }
+                    { name: '10x Multiplier', desc: 'MEGA PUFFS!', price: 5000 },
+                    { name: '25x Multiplier', desc: '25 puffs per click!', price: 25000 },
+                    { name: '50x Multiplier', desc: '50 puffs per click!', price: 100000 },
+                    { name: '100x Multiplier', desc: 'ONE HUNDRED PUFFS!', price: 500000 },
+                    { name: '250x Multiplier', desc: 'INSANITY!', price: 2500000 },
+                    { name: '500x Multiplier', desc: 'MONSTROUS!', price: 10000000 },
+                    { name: '1000x Multiplier', desc: 'LEGENDARY! ONE THOUSAND!', price: 50000000 }
                 ]
             }
         };
@@ -676,7 +826,6 @@
 
         let sessionCount = 0;
         let totalCount = 0;
-        let highScore = 0;
         let gameActive = true;
         let multiplier = 1;
         let ownedUpgrades = [];
@@ -691,7 +840,6 @@
         const sessionBox = document.getElementById('sessionBox');
         const sessionDisplay = document.getElementById('sessionCount');
         const totalDisplay = document.getElementById('totalCount');
-        const highScoreDisplay = document.getElementById('highScore');
         const multiplierDisplay = document.getElementById('multiplierDisplay');
         const subtitle = document.getElementById('subtitle');
         const warning = document.getElementById('warning');
@@ -703,6 +851,12 @@
             { id: 'multi3x', multiplier: 3, requires: 'multi2x' },
             { id: 'multi5x', multiplier: 5, requires: 'multi3x' },
             { id: 'multi10x', multiplier: 10, requires: 'multi5x' },
+            { id: 'multi25x', multiplier: 25, requires: 'multi10x' },
+            { id: 'multi50x', multiplier: 50, requires: 'multi25x' },
+            { id: 'multi100x', multiplier: 100, requires: 'multi50x' },
+            { id: 'multi250x', multiplier: 250, requires: 'multi100x' },
+            { id: 'multi500x', multiplier: 500, requires: 'multi250x' },
+            { id: 'multi1000x', multiplier: 1000, requires: 'multi500x' },
         ];
 
         function updateMultiplier() {
@@ -819,18 +973,12 @@
         function loadProgress() {
             try {
                 const savedTotal = localStorage.getItem('juulcat-total-puffs');
-                const savedHigh = localStorage.getItem('juulcat-high-score');
                 const savedUpgrades = localStorage.getItem('juulcat-upgrades');
                 const savedLang = localStorage.getItem('juulcat-lang');
                 
                 if (savedTotal) {
                     totalCount = parseInt(savedTotal) || 0;
                     totalDisplay.textContent = totalCount;
-                }
-                
-                if (savedHigh) {
-                    highScore = parseInt(savedHigh) || 0;
-                    highScoreDisplay.textContent = highScore;
                 }
                 
                 if (savedUpgrades) {
@@ -850,11 +998,6 @@
             try {
                 localStorage.setItem('juulcat-total-puffs', totalCount.toString());
                 localStorage.setItem('juulcat-upgrades', JSON.stringify(ownedUpgrades));
-                if (sessionCount > highScore) {
-                    highScore = sessionCount;
-                    localStorage.setItem('juulcat-high-score', highScore.toString());
-                    highScoreDisplay.textContent = highScore;
-                }
             } catch (e) {
                 console.log('Could not save progress:', e);
             }
@@ -928,6 +1071,57 @@
             
             sessionDisplay.textContent = '0';
             updateMultiplier();
+        }
+
+        function confirmReset(event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            
+            const message = currentLang === 'ca' 
+                ? 'Estàs segur que vols restablir TOTES les estadístiques i millores? Això no es pot desfer!'
+                : 'Are you sure you want to reset ALL stats and upgrades? This cannot be undone!';
+            
+            if (confirm(message)) {
+                resetStats();
+            }
+        }
+
+        function resetStats() {
+            // Reset all variables
+            sessionCount = 0;
+            totalCount = 0;
+            ownedUpgrades = [];
+            multiplier = 1;
+            gameActive = true;
+            clickTimes = [];
+            suspiciousClickCount = 0;
+            
+            // Clear localStorage
+            localStorage.removeItem('juulcat-total-puffs');
+            localStorage.removeItem('juulcat-upgrades');
+            
+            // Update displays
+            sessionDisplay.textContent = '0';
+            totalDisplay.textContent = '0';
+            updateMultiplier();
+            
+            // Reset visuals
+            catImg.style.opacity = '1';
+            catImg.style.filter = 'drop-shadow(0 10px 30px rgba(0,0,0,0.5))';
+            document.body.classList.remove('danger');
+            sessionBox.classList.remove('danger');
+            cat.classList.remove('shaking');
+            warning.classList.remove('active');
+            document.getElementById('explosion').classList.remove('active');
+            document.getElementById('gameOver').classList.remove('active');
+            
+            const successMessage = currentLang === 'ca'
+                ? 'Totes les estadístiques s\'han restablert! 🔄'
+                : 'All stats reset! 🔄';
+            
+            showMessage(successMessage);
         }
 
         function checkAutoclicker() {
@@ -1048,6 +1242,7 @@
         document.body.addEventListener('click', (e) => {
             if (!e.target.closest('.restart-btn') && 
                 !e.target.closest('.shop-btn') && 
+                !e.target.closest('.reset-btn') &&
                 !e.target.closest('.modal') &&
                 !e.target.closest('.lang-switcher')) {
                 hit();
